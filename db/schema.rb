@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2021_02_13_195725) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "emai"
+    t.string "email"
     t.string "password_hash"
     t.string "password_salt"
     t.string "avatar_url"

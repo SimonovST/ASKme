@@ -12,14 +12,14 @@ class User < ApplicationRecord
   #Связь один ко многим
   has_many :questions
   #Валидация по проверке наличия Email и Username при создание пользователя. без них не пропустит
-  validates :emai, :username, presence: true
+  validates :email, :username, presence: true
   #Валидация по проверке наличия Email и Username при создание пользователя. Повторяющейся не пропустит
-  validates :emai, :username, uniqueness: true
+  validates :email, :username, uniqueness: true
   #Валидация по проверке формата электронной почты пользователя
-  validates :emai, presence: true, format: { with: EMAIL }
+  validates :email, presence: true, format: { with: EMAIL }
   #Валидция по проверке максимальной длины юзернейма пользователя (не больше 40 символов)
   #Валидция по проверке формата юзернейма пользователя (только латинские буквы, цифры, и знак _)
-  validates :username, presence:true, length: { in: 2..40 }
+  validates :username, length: { in: 2..40 }
   #validates :username, format: { with: USERNAME }, presence:true
 
 
@@ -58,11 +58,11 @@ class User < ApplicationRecord
   # Основной метод для аутентификации юзера (логина). Проверяет email и пароль,
   # если пользователь с такой комбинацией есть в базе, возвращает этого
   # пользователя. Если нет — возвращает nil.
-  def self.authenticate(emai, password)
+  def self.authenticate(email, password)
     # Сперва находим кандидата по email
-    user = find_by(emai: emai)
+    user = find_by(email: email)
 
-    # Если пользователь не найден, возвращает nil
+   # Если пользователь не найден, возвращает nil
     return nil unless user.present?
 
     # Формируем хэш пароля из того, что передали в метод
