@@ -20,13 +20,20 @@ class User < ApplicationRecord
   #Валидция по проверке максимальной длины юзернейма пользователя (не больше 40 символов)
   #Валидция по проверке формата юзернейма пользователя (только латинские буквы, цифры, и знак _)
   validates :username, length: { in: 2..40 }
-  #validates :username, format: { with: USERNAME }, presence:true
+  # validates :username, format: { with: USERNAME }, presence:true
 
 
   validates_presence_of :password, on: :create
   validates_confirmation_of :password
 
+  #Приведение к нижнему регистру
+  before_validation :change_case!
+  #сохранение зашифрованого пароля в базу
   before_save :encrypt_password
+
+  def change_case!
+    username&.downcase!
+  end
 
   def encrypt_password
     if password.present?
