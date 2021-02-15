@@ -19,7 +19,7 @@ class User < ApplicationRecord
   #Валидция по проверке максимальной длины юзернейма пользователя (не больше 40 символов)
   #Валидция по проверке формата юзернейма пользователя (только латинские буквы, цифры, и знак _)
   validates :username, presence:true, length: { in: 2..40 }
-  #validates :username, format: { without: USERNAME }, presence:true
+  #validates :username, format: { with: USERNAME }, presence:true
 
   attr_accessor :password
 
