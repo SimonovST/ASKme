@@ -8,6 +8,7 @@ class User < ApplicationRecord
   EMAIL = /\A.+@.+\..+\z/
   USERNAME = /@+\A\w+\z/
 
+  attr_accessor :password
   #Связь один ко многим
   has_many :questions
   #Валидация по проверке наличия Email и Username при создание пользователя. без них не пропустит
@@ -21,7 +22,6 @@ class User < ApplicationRecord
   validates :username, presence:true, length: { in: 2..40 }
   #validates :username, format: { with: USERNAME }, presence:true
 
-  attr_accessor :password
 
   validates_presence_of :password, on: :create
   validates_confirmation_of :password
