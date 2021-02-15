@@ -1,4 +1,4 @@
-class Question < ApplicationRecord#::Base #дописал из урока (::Base) в оригинале нет
+class Question < ApplicationRecord
 
   # Эта команда добавляет связь с моделью User на уровне объектов, она же
   # добавляет метод .user к данному объекту.
@@ -8,8 +8,6 @@ class Question < ApplicationRecord#::Base #дописал из урока (::Bas
   # который равен question.user_id.
   belongs_to :user
 
-  # валидируем сразу и связь, теперь нельзя создать вопрос, у которого нет юзера
-  validates :user, :text, presence: true
   #Валидция по проверке максимальной длины текста вопроса (максимум 255 символов)
-  validates :text, length: { maximum: 255 }
+  validates :text, presence: true, length: { maximum: 255 }
 end

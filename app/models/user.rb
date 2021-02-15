@@ -1,10 +1,13 @@
 # Эта библиотека понадобится нам для шифрования.
 require 'openssl'
 
-class User < ApplicationRecord#::Base #дописал из урока (::Base) в оригинале нет
+class User < ApplicationRecord
   #Параметры для модуля шифрования паролей
   ITERATIONS = 20_000
   DIGEST = OpenSSL::Digest::SHA256.new
+  EMAIL = /\A.+@.+\..+\z/
+  USERNAME = /@+\A\w+\z/
+
   #Связь один ко многим
   has_many :questions
   #Валидация по проверке наличия Email и Username при создание пользователя. без них не пропустит
@@ -12,15 +15,11 @@ class User < ApplicationRecord#::Base #дописал из урока (::Base) �
   #Валидация по проверке наличия Email и Username при создание пользователя. Повторяющейся не пропустит
   validates :emai, :username, uniqueness: true
   #Валидация по проверке формата электронной почты пользователя
-  validates :emai, format: { with: /\A.+@.+\..+\z/  }
+  validates :emai, presence: true, format: { with: EMAIL }
   #Валидция по проверке максимальной длины юзернейма пользователя (не больше 40 символов)
-  validates :username, length: { maximum: 40 }
   #Валидция по проверке формата юзернейма пользователя (только латинские буквы, цифры, и знак _)
-  validates :username,
-    format: {
-      with: /\A\w+\z/,
-      message: 'Username must contain only: Latin letters (a-Z), numbers (1-9), and the character _'
-    }
+  validates :username, presence:true, length: { in: 2..40 }
+  #validates :username, format: { without: USERNAME }, presence:true
 
   attr_accessor :password
 
