@@ -60,12 +60,13 @@ class User < ApplicationRecord
     nil
   end
 
+  private
+
   def change_case!
     username&.downcase!
     email&.downcase!
   end
 
-  private
   def encrypt_password
     if password.present?
       # Создаем т.н. «соль» — случайная строка, усложняющая задачу хакерам по
