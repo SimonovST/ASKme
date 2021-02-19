@@ -3,7 +3,7 @@
 
   <div class="column-1-2">
     <div class="form">
-      <%= form_tag new_session_url do %>
+      <%= form_tag sessions_path do %>
         <div class="form-field">
           <%= label_tag :email, 'Логин (email)', class: 'form-label' %>
           <%= text_field_tag :email, params[:email], class: 'form-text-field' %>
@@ -21,3 +21,4 @@
     </div>
   </div>
 </div>
+
