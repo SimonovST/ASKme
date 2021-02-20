@@ -8,6 +8,10 @@ module ApplicationHelper
     end
   end
 
+  def fa_icon(icon_class)
+    content_tag 'span', '', class: "fa fa-#{icon_class}"
+  end
+
   #Разобратся со склонятором привязать к вопросу и ответу
   def self.sklonenie(number, begemot, begemota, begemotov, with_number = false)
     ostatok = number % 10
