@@ -8,6 +8,8 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 
 gem 'jquery-rails'
 
+gem 'rails_12factor'
+
 gem 'uglifier'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
