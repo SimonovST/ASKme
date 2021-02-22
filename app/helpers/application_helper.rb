@@ -12,8 +12,7 @@ module ApplicationHelper
     content_tag 'span', '', class: "fa fa-#{icon_class}"
   end
 
-  #Разобратся со склонятором привязать к вопросу и ответу
-  def self.sklonenie(number, begemot, begemota, begemotov, with_number = false)
+  def sklonenie(number, begemot, begemota, begemotov, with_number = false)
     ostatok = number % 10
     ostatok100 = number % 100
     prefix = ""
