@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   attr_accessor :password
   #Связь один ко многим
-  has_many :questions
+  has_many :questions, dependent: :destroy
   #Валидация по проверке наличия Email и Username при создание пользователя. без них не пропустит
   validates :email, :username, presence: true
   #Валидация по проверке наличия Email и Username при создание пользователя. Повторяющейся не пропустит
