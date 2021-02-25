@@ -7,6 +7,7 @@ class User < ApplicationRecord
   DIGEST = OpenSSL::Digest::SHA256.new
   EMAIL = /\A.+@.+\..+\z/
   USERNAME = /\A\w+\z/
+  USER_COLOR = /\A#([a-f\d]{3}){1,2}\z/
 
   attr_accessor :password
   #Связь один ко многим
@@ -21,6 +22,7 @@ class User < ApplicationRecord
   #Валидция по проверке формата юзернейма пользователя (только латинские буквы, цифры, и знак _)
   validates :username, length: { in: 2..40 }
   # validates :username, format: { with: USERNAME }, presence:true
+  validates :profile_color, format: { with: USER_COLOR }
 
   validates_presence_of :password, on: :create
   validates_confirmation_of :password
