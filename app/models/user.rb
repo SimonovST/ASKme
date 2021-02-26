@@ -7,7 +7,7 @@ class User < ApplicationRecord
   DIGEST = OpenSSL::Digest::SHA256.new
   EMAIL = /\A.+@.+\..+\z/
   USERNAME = /\A\w+\z/
-  USER_COLOR = /\A#([a-f\d]{3}){1,2}\z/
+  USER_COLOR = /\A#\h{3}{1,2}\z/
 
   attr_accessor :password
   #Связь один ко многим
