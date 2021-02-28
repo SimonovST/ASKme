@@ -4,7 +4,7 @@
 
 .form-label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
 }
 
 .form-textarea {
@@ -17,7 +17,7 @@
   max-width: 100%;
   box-sizing: border-box;
   border: 1px solid #00b6ad;
-  padding: 4px 10px;
+  padding: 2px 5px;
   border-radius: 3px;
   font-size: 16px;
 }
